@@ -28,7 +28,8 @@ class App extends Component {
   }
 
   addToMenu(item){
-    console.log(item)
+    item.preventDefault()
+    console.log(item.target)
     let tempList = this.state.menuList
     tempList.push(item)
     this.setState({
@@ -47,7 +48,7 @@ class App extends Component {
         <SearchList key={index} itemTitle={item.title} itemIngredients={item.ingredients} itemLink={item.href} itemPhoto={item.thumbnail} add={this.addToMenu}/>
       )
     })
-    
+
     let menuArr = []
     this.state.menuList.map((item, index) => {
       menuArr.push(
