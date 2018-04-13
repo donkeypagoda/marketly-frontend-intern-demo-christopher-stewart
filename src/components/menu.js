@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-function SearchList(props){
-  // console.log(props)
+function Menu(props){
+  console.log(props)
   return (
     <div>
       <div className="d-flex w-100 justify-content-between">
         <h5 className="mb-1">
-          {props.itemTitle}
+          {props.title}
         </h5>
         <img src={props.itemPhoto} />
       </div>
@@ -14,10 +14,10 @@ function SearchList(props){
         {props.itemIngredients}
       </div>
       <div>
-        <button className="addButton" onClick={props.add}>Add This To Your Menu!</button>
+        <button className="removeButton" onClick={props.remove}>Remove This From Your Menu!</button>
       </div>
     </div>
   )
 }
 
-export default SearchList
+export default Menu

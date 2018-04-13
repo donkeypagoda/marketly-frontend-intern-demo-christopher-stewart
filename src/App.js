@@ -1,33 +1,57 @@
 import React, { Component } from 'react';
 import './App.css';
 import SearchList from './components/searchList'
+import Menu from './components/menu'
 
 
 class App extends Component {
   constructor(){
     super()
     this.state = {
-      searchResult: []
+      searchResult: [],
+      menuList: []
     }
     this.submitSearch = this.submitSearch.bind(this)
+    this.addToMenu = this.addToMenu.bind(this)
+    this.removeFromMenu = this.removeFromMenu.bind(this)
   }
 
   async submitSearch(e){
     e.preventDefault()
-    console.log(e.target[0].value)
+    // console.log(e.target[0].value)
     const response = await fetch(`http://www.recipepuppy.com/api/?q=${e.target[0].value}`)
     const results = await response.json()
     this.setState({
       searchResult: results.results
     })
-    console.log(this.state.searchResult)
+    // console.log(this.state.searchResult)
+  }
+
+  addToMenu(item){
+    console.log(item)
+    let tempList = this.state.menuList
+    tempList.push(item)
+    this.setState({
+      menuList: tempList
+    })
+  }
+
+  removeFromMenu(item){
+    console.log(item)
   }
 
   render() {
     let searchArr = []
     this.state.searchResult.map((item, index) => {
       searchArr.push(
-        <SearchList key={index} itemTitle={item.title} itemIngredients={item.ingredients} itemLink={item.href} itemPhoto={item.thumbnail} />
+        <SearchList key={index} itemTitle={item.title} itemIngredients={item.ingredients} itemLink={item.href} itemPhoto={item.thumbnail} add={this.addToMenu}/>
+      )
+    })
+    
+    let menuArr = []
+    this.state.menuList.map((item, index) => {
+      menuArr.push(
+        <Menu key={index} itemTitle={item.title} remove={this.removeFromMenu} />
       )
     })
 
@@ -39,6 +63,9 @@ class App extends Component {
               <input type="text" />
             <button type="submit" className="submitButton">Search Meals</button>
           </form>
+        </div>
+        <div>
+          {menuArr}
         </div>
         <div className="searchResults">
           {searchArr}
