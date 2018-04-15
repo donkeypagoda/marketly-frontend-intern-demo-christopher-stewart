@@ -29,16 +29,22 @@ class App extends Component {
 
   addToMenu(item){
     item.preventDefault()
-    console.log(item.target)
+    let newItem = item.target.firstElementChild.innerText
     let tempList = this.state.menuList
-    tempList.push(item)
+    tempList.push(newItem)
     this.setState({
       menuList: tempList
     })
   }
 
   removeFromMenu(item){
-    console.log(item)
+    item.preventDefault()
+    // console.log(item.target)
+    // let tempList = this.state.menuList
+    // let newList = tempList.filter(item =>{ return item.})
+    // this.setState({
+    //   menuList: tempList
+    // })
   }
 
   render() {
@@ -52,7 +58,7 @@ class App extends Component {
     let menuArr = []
     this.state.menuList.map((item, index) => {
       menuArr.push(
-        <Menu key={index} itemTitle={item.title} remove={this.removeFromMenu} />
+        <Menu key={index} itemTitle={item} remove={this.removeFromMenu} />
       )
     })
 
