@@ -39,12 +39,12 @@ class App extends Component {
 
   removeFromMenu(item){
     item.preventDefault()
-    // console.log(item.target)
-    // let tempList = this.state.menuList
-    // let newList = tempList.filter(item =>{ return item.})
-    // this.setState({
-    //   menuList: tempList
-    // })
+    let removedItem = item.target.firstElementChild.innerText
+    let tempList = this.state.menuList
+    let newList = tempList.filter(item =>{ return item !== removedItem})
+    this.setState({
+      menuList: newList
+    })
   }
 
   render() {

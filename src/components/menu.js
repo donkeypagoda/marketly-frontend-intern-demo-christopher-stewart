@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Menu(props){
-  console.log(props)
   return (
     <div>
       <form className="addForm" onSubmit={props.remove}>
