@@ -69,18 +69,20 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="searchForm">
-          <form onSubmit={this.submitSearch}>
-            <label>Search for Meals Here!</label>
-              <input type="text" />
-            <button type="submit" className="submitButton">Search Meals</button>
-          </form>
-        </div>
-        <div>
-          {menuArr}
-        </div>
-        <div className="searchResults">
-          {searchArr}
+        <div className="containerMain">
+          <div className="searchForm">
+            <form onSubmit={this.submitSearch}>
+              <label>Search for Meals Here!</label>
+                <input type="text" />
+              <button type="submit" className="submitButton">Search Meals</button>
+            </form>
+          </div>
+          <div className="menu">
+            {menuArr}
+          </div>
+          <div className="searchResults">
+            {searchArr}
+          </div>
         </div>
       </div>
     );

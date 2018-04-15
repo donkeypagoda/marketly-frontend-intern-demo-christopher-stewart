@@ -1,7 +1,6 @@
 import React from 'react'
 
 function SearchList(props){
-  // console.log(props)
   return (
 
     <div className="searchList">
