@@ -2,7 +2,7 @@ import React from 'react';
 
 function Menu(props){
   return (
-    <div>
+    <div className="menuList">
       <form className="addForm" onSubmit={props.remove}>
           <h5 className="mb-1">
             {props.itemTitle}

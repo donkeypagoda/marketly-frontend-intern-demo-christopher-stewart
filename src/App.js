@@ -18,20 +18,17 @@ class App extends Component {
 
   async submitSearch(e){
     e.preventDefault()
-    // console.log(e.target[0].value)
     const response = await fetch(`http://www.recipepuppy.com/api/?q=${e.target[0].value}`)
     const results = await response.json()
     this.setState({
       searchResult: results.results
     })
-    // console.log(this.state.searchResult)
   }
 
   addToMenu(item){
     item.preventDefault()
-    let newItem = item.target.firstElementChild.innerText
     let tempList = this.state.menuList
-    tempList.push(newItem)
+    tempList.push(item.target.firstElementChild.innerText)
     this.setState({
       menuList: tempList
     })
@@ -39,9 +36,9 @@ class App extends Component {
 
   removeFromMenu(item){
     item.preventDefault()
-    let removedItem = item.target.firstElementChild.innerText
     let tempList = this.state.menuList
-    let newList = tempList.filter(item =>{ return item !== removedItem})
+    let removedItem = item.target.firstElementChild.innerText
+    let newList = tempList.filter(item =>{ return item !== removedItem })
     this.setState({
       menuList: newList
     })
@@ -51,14 +48,22 @@ class App extends Component {
     let searchArr = []
     this.state.searchResult.map((item, index) => {
       searchArr.push(
-        <SearchList key={index} itemTitle={item.title} itemIngredients={item.ingredients} itemLink={item.href} itemPhoto={item.thumbnail} add={this.addToMenu}/>
+        <SearchList
+        key={index}
+        itemTitle={item.title}
+        itemIngredients={item.ingredients}
+        itemLink={item.href}
+        itemPhoto={item.thumbnail}
+        add={this.addToMenu}/>
       )
     })
 
     let menuArr = []
     this.state.menuList.map((item, index) => {
       menuArr.push(
-        <Menu key={index} itemTitle={item} remove={this.removeFromMenu} />
+        <Menu key={index}
+        itemTitle={item}
+        remove={this.removeFromMenu} />
       )
     })
 

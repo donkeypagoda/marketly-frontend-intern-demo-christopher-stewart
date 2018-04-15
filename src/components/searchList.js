@@ -4,13 +4,13 @@ function SearchList(props){
   // console.log(props)
   return (
 
-    <div className="d-flex w-100 justify-content-between">
-      <form className="addForm" onSubmit={props.add}>
-        <h5 className="mb-1">
+    <div className="searchList">
+      <form className="addForm" alt="menu item" onSubmit={props.add}>
+        <h5>
           {props.itemTitle}
         </h5>
         <img src={props.itemPhoto} />
-        <div className="mb-1">
+        <div>
           {props.itemIngredients}
         </div>
         <div>
