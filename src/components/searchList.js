@@ -8,17 +8,20 @@ function SearchList(props){
   return (
     <div className="searchList">
         <div className="containerResults">
-          <img className="searchImg" alt="yum yum" src={props.itemPhoto} />
+          <img className="searchImg" src={props.itemPhoto} />
           <div className="searchTitle">
             <h5>
               {props.itemTitle}
             </h5>
           </div>
-          <div>
-          <button className="addButton" onClick={(e) => props.add(e,props)}>Add This To Your Menu!</button>
+          <div className="addButton">
+          <button onClick={(e) => props.add(e,props)}>Add This To Your Menu!</button>
           </div>
           <div className="ingridients">
             {shortIng}
+          </div>
+          <div className="itemLink">
+            <a href={props.itemLink}>View Recipe</a>
           </div>
         </div>
     </div>

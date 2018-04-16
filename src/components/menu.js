@@ -7,7 +7,7 @@ function Menu(props){
         {props.itemTitle}
       </div>
       <div className="removeButton" >
-        <button onClick={(e) => props.remove(e,props)}>Remove This From Your Menu!</button>
+        <button onClick={(e) => props.remove(e,props)}>Remove From Menu</button>
       </div>
     </div>
   )

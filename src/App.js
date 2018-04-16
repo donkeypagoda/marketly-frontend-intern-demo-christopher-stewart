@@ -72,16 +72,23 @@ class App extends Component {
         <div className="containerMain">
           <div className="searchForm">
             <form onSubmit={this.submitSearch}>
-              <label>Search for Meals Here!</label>
-                <input type="text" />
-              <button type="submit" className="submitButton">Search Meals</button>
+              <div className="searchLabel">
+                <label>Search for Meals Here!</label>
+              </div>
+              <input type="text" />
+              <div className="searchButton">
+                <button type="submit" className="submitButton">Search Meals</button>
+              </div>
             </form>
           </div>
           <div className="menu">
+            <div className="menuBanner">
+            <h4>Your Meal Choices!</h4>
+            </div>
             {menuArr}
           </div>
           <div className="searchResults">
-            {searchArr}
+            { searchArr.length > 0 ? searchArr : <div className="placeHolder">Your search results will appear here</div>}
           </div>
         </div>
       </div>
