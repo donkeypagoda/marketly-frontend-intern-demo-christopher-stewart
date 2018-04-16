@@ -3,12 +3,12 @@ import React from 'react';
 function Menu(props){
   return (
     <div className="menuList">
-      <form className="addForm" onSubmit={props.remove}>
-          <h5>
-            {props.itemTitle}
-          </h5>
-          <button className="removeButton">Remove This From Your Menu!</button>
-      </form>
+      <div className="menuItemTitle">
+        {props.itemTitle}
+      </div>
+      <div className="removeButton" >
+        <button onClick={(e) => props.remove(e,props)}>Remove This From Your Menu!</button>
+      </div>
     </div>
   )
 }
